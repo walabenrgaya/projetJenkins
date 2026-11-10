@@ -4,8 +4,7 @@ pipeline {
   stages {
     stage('Cloner le dépôt') {
       steps {
-        // Remplacer par l'URL de votre dépôt GitHub
-        git url: 'https://github.com/REPLACE_ME/projetJenkins.git', branch: 'main'
+        git url: 'https://github.com/walabenrgaya/projetJenkins.git', branch: 'main'
       }
     }
     stage('Étape 1 : Vérification du dépôt') {
