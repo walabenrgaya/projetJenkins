@@ -2,5 +2,5 @@ services:
   web:
     image: walabenrgaya/monapp:latest
     ports:
-      - "8090:80"   # 8080 est deja utilise par Jenkins
+      - "8090:80"   # 8080 = Oracle, 8081 = Jenkins
     restart: unless-stopped
