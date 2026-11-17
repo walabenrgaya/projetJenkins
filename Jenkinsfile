@@ -46,10 +46,21 @@ pipeline {
         }
       }
     }
+    stage('Deploy (Staging)') {
+      steps {
+        bat """
+          docker compose pull
+          docker compose up -d
+          docker ps --filter "name=monapp-web"
+          ping -n 3 127.0.0.1 > nul
+          curl -I http://localhost:8090 | find "200 OK"
+        """
+      }
+    }
   }
 
   post {
-    success { echo 'Build+Test+Push OK' }
-    failure { echo 'Build/Tests/Push KO' }
+    success { echo 'Build+Test+Push+Deploy OK' }
+    failure { echo 'Build/Tests/Push/Deploy KO' }
   }
 }
